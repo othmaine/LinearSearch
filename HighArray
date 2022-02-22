@@ -1,0 +1,114 @@
+
+package highSearch;
+class HighArray
+{
+    //fields-------------
+    private long[] a;
+    private int nElem;
+    
+    //(1)creation-------------
+    public HighArray(int max)
+    {
+        a = new long[max];
+        nElem =0;
+    }
+    
+    //(2)insert-----------------------
+    public void insert(long number)
+    {
+        a[nElem] = number;
+        nElem ++;
+    }
+    
+    //(3)display-----------------------
+    public void display()
+    {
+        for(int i =0; i<nElem;i++)
+        {
+            System.out.println("arr[" + i + "]=" + a[i]);
+        }
+        System.out.println("------------------------");
+    }
+    
+    //(4)delete-------------------------
+    public boolean delete(long deleteKey)
+    {
+        int i;
+        for(i =0;i<nElem;i++)
+        {
+            if(a[i]==deleteKey)
+            {
+                break;
+            }
+        }
+        if(i==nElem)
+        {
+            return false;
+        }
+        else
+        {
+            nElem--;
+            for(int j =i; j< nElem;j++ )
+            {
+                a[j] =a[j+1];
+            }
+            return true;
+        }
+        
+    }
+    
+    //(5)find----------------
+    public boolean find(long key)
+    {
+        int i;
+        for(i=0;i<nElem;i++)
+        {
+            if(a[i]==key)
+            {
+                break;
+            }
+        }
+        if(i==nElem)
+        {
+            return false;
+        }
+        else
+        {
+            return true;
+        }
+    }
+    
+}
+public class HighArrayApp 
+{
+
+    public static void main(String[] args) 
+    {
+        HighArray arr;
+        arr = new HighArray(11);
+        
+        //insert---------------------------
+        arr.insert(6);
+        arr.insert(4);
+        arr.insert(5);
+        arr.insert(8);
+        arr.insert(34);
+        arr.insert(57);
+        arr.insert(3);
+        arr.insert(46);
+        arr.insert(7);
+        arr.insert(60);
+        
+        //display----------------
+        arr.display();
+        
+        if(arr.find(60))
+        {
+            arr.delete(60);
+        }
+        arr.display();
+        
+        
+    }
+    
+}
